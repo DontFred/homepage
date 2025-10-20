@@ -20,6 +20,8 @@ export default function Home() {
     " ",
     "---------------------------------------------------------- ",
     " ",
+    "  This is a terminal-style interface where you can interact using commands.",
+    "  Just type a command and hit Enter to execute it.",
     <div key="heading">
       {"  "}type or click{" "}
       <button
@@ -32,7 +34,7 @@ export default function Home() {
       >
         <u>help</u>
       </button>{" "}
-      to see what you could do.
+      to see what commands are available.
     </div>,
     " ",
     <span key="legal-links" className="flex flex-row">
@@ -100,6 +102,7 @@ export default function Home() {
           "help       - Show this help message",
           "about      - About Frederik W. Grimm",
           "projects   - List some projects",
+          "contact    - Contact DontFred (Frederik W. Grimm)",
           "clear      - Clear the console",
           " ",
         ]);
@@ -119,7 +122,10 @@ export default function Home() {
           "As a Certified Software Project Manager (CSPM), I don't just write code—I deliver complete, organized, and impactful business solutions from start to finish.",
           <span>
             Ready to build a more efficient business?{" "}
-            <Link className="underline" href="mailto:mail@fwgrimm.com">
+            <Link
+              className="underline"
+              href="mailto:mail@fwgrimm.com?subject=I%20need%20a%20lifeline!%20(Tasks%20are%20killing%20me)&body=Hey%20Frederik%2C%0A%0AI'm%20drowning%20in%20**repetitive%20tasks%2Fwebsite%20errors%2Fmanual%20data%20entry**%20and%20it's%20killing%20my%20productivity.%20I%20need%20a%20proper%20**automation%2Ffull-stack%20solution**%20ASAP.%0A%0ACan%20we%20please%20schedule%20a%2015-minute%20chat%3F%20I%20need%20a%20lifeline!%0A%0AThanks%2C"
+            >
               Contact me
             </Link>
             .
@@ -179,7 +185,51 @@ export default function Home() {
           </span>,
           " ",
         ]);
-        break; // fixed missing break
+        break;
+      case "contact":
+        setDisplayedItems((items) => [
+          ...items,
+          <div className="text-green-500">
+            visitor@dontfred
+            <span className="text-foreground">:</span>
+            <span className="text-purple-500 px-0.5">~</span>
+            <span className="text-blue-500 px-0.5">$ </span>
+            <span className="text-foreground">{input}</span>
+          </div>,
+          "You can reach me at:",
+          <span>
+            Email:{" "}
+            <Link
+              className="underline"
+              href="mailto:mail@fwgrimm.com?subject=I%20need%20a%20lifeline!%20(Tasks%20are%20killing%20me)&body=Hey%20Frederik%2C%0A%0AI'm%20drowning%20in%20**repetitive%20tasks%2Fwebsite%20errors%2Fmanual%20data%20entry**%20and%20it's%20killing%20my%20productivity.%20I%20need%20a%20proper%20**automation%2Ffull-stack%20solution**%20ASAP.%0A%0ACan%20we%20please%20schedule%20a%2015-minute%20chat%3F%20I%20need%20a%20lifeline!%0A%0AThanks%2C"
+            >
+              mail@fwgrimm.com
+            </Link>
+          </span>,
+          <span>
+            Phone:{" "}
+            <Link className="underline" href="tel:+4917621915631">
+              +49 176 21915631
+            </Link>
+          </span>,
+          <span>
+            GitHub:{" "}
+            <Link className="underline" href="https://github.com/dontfred">
+              github.com/dontfred
+            </Link>
+          </span>,
+          <span>
+            LinkedIn:{" "}
+            <Link
+              className="underline"
+              href="https://www.linkedin.com/in/frederik-w-grimm/"
+            >
+              linkedin.com/in/frederik-w-grimm
+            </Link>
+          </span>,
+          " ",
+        ]);
+        break;
       case "clear":
         setDisplayedItems([...welcome]);
         break;

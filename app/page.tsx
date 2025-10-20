@@ -16,6 +16,7 @@ export default function Home() {
     "|_____/ \\___/|_| |_|\\__|_|  |_|  \\___|\\__,_|",
     " ",
     "Welcome to my homepage!",
+    "DontFred - Frederik W. Grimm freelancing.",
     "I'm Frederik W. Grimm, an IT-Freelancer for Web & Backend Development, AI and Automation Solutions.",
     " ",
     "---------------------------------------------------------- ",

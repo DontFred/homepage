@@ -1,103 +1,244 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import React from "react";
+import { ReactNode, useRef, useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [inputValue, setInputValue] = useState<string>("");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+  const welcome: ReactNode[] = [
+    " _____              _   ______            _",
+    "|  __ \\            | | |  ____|          | |",
+    "| |  | | ___  _ __ | |_| |__ _ __ ___  __| |",
+    "| |  | |/ _ \\| '_ \\| __|  __| '__/ _ \\/ _` |",
+    "| |__| | (_) | | | | |_| |  | | |  __/ (_| |",
+    "|_____/ \\___/|_| |_|\\__|_|  |_|  \\___|\\__,_|",
+    " ",
+    "Welcome to my homepage!",
+    "I'm Frederik W. Grimm, an IT-Freelancer for Web & Backend Development, AI and Automation Solutions.",
+    " ",
+    "---------------------------------------------------------- ",
+    " ",
+    <div key="heading">
+      {"  "}type or click{" "}
+      <button
+        onClick={() => {
+          setInputValue("help");
+          runCommand("help");
+          inputRef.current?.focus();
+        }}
+        className="cursor-pointer"
+      >
+        <u>help</u>
+      </button>{" "}
+      to see what you could do.
+    </div>,
+    " ",
+    <span key="legal-links" className="flex flex-row">
+      <div key="imprint">
+        {"  "}
+        <u>
+          <Link href="/imprint">Impressum | Imprint</Link>
+        </u>{" "}
+      </div>
+      ⌁
+      <div key="privacy-policy">
+        {"  "}
+        <u>
+          <Link href="/privacy-policy">
+            Datenschutzerklärung | Privacy Policy
+          </Link>
+        </u>{" "}
+      </div>
+      ⌁
+      <div key="terms-and-conditions">
+        {"  "}
+        <u>
+          <Link href="/terms-and-conditions">AGB | Terms and Conditions</Link>
+        </u>{" "}
+      </div>
+    </span>,
+    " ",
+    "---------------------------------------------------------- ",
+    " ",
+    " ",
+  ];
+
+  const [displayedItems, setDisplayedItems] = useState<ReactNode[]>([
+    ...welcome,
+  ]);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const runCommand = async (raw: string) => {
+    const input = raw.trim().toLowerCase();
+    setInputValue("");
+    switch (input) {
+      case "":
+        setDisplayedItems((items) => [
+          ...items,
+          <div className="text-green-500">
+            visitor@dontfred
+            <span className="text-foreground">:</span>
+            <span className="text-purple-500 px-0.5">~</span>
+            <span className="text-blue-500 px-0.5">$ </span>
+            <span className="text-foreground">{input}</span>
+          </div>,
+        ]);
+        return;
+      case "help":
+        setDisplayedItems((items) => [
+          ...items,
+          <div className="text-green-500">
+            visitor@dontfred
+            <span className="text-foreground">:</span>
+            <span className="text-purple-500 px-0.5">~</span>
+            <span className="text-blue-500 px-0.5">$ </span>
+            <span className="text-foreground">{input}</span>
+          </div>,
+          "help       - Show this help message",
+          "about      - About Frederik W. Grimm",
+          "projects   - List some projects",
+          "clear      - Clear the console",
+          " ",
+        ]);
+        break;
+      case "about":
+        setDisplayedItems((items) => [
+          ...items,
+          <div className="text-green-500">
+            visitor@dontfred
+            <span className="text-foreground">:</span>
+            <span className="text-purple-500 px-0.5">~</span>
+            <span className="text-blue-500 px-0.5">$ </span>
+            <span className="text-foreground">{input}</span>
+          </div>,
+          "I'm Frederik Grimm, a business-minded Full-Stack Developer and Automation Expert.",
+          "My mission is to help your business scale efficiently. I do this by building custom, high-performance web applications and AI-powered workflows (using Next.js, Golang, & n8n) that automate your manual tasks and optimize your systems.",
+          "As a Certified Software Project Manager (CSPM), I don't just write code—I deliver complete, organized, and impactful business solutions from start to finish.",
+          <span>
+            Ready to build a more efficient business?{" "}
+            <Link className="underline" href="mailto:mail@fwgrimm.com">
+              Contact me
+            </Link>
+            .
+          </span>,
+          " ",
+        ]);
+        break;
+      case "projects":
+        setDisplayedItems((items) => [
+          ...items,
+          <div className="text-green-500">
+            visitor@dontfred
+            <span className="text-foreground">:</span>
+            <span className="text-purple-500 px-0.5">~</span>
+            <span className="text-blue-500 px-0.5">$ </span>
+            <span className="text-foreground">{input}</span>
+          </div>,
+          "Here are some of my projects:",
+          <span>
+            - Website: A website for a client -{" "}
+            <Link
+              className="underline"
+              href="https://silverweb-web.vercel.app/"
+            >
+              Visit Website
+            </Link>
+          </span>,
+          <span>
+            - Open-Source: I contribute to various open-source projects, such
+            like{" "}
+            <Link
+              className="underline"
+              href="https://github.com/https://github.com/Dokploy/dokploy"
+            >
+              Dokploy
+            </Link>
+            .
+          </span>,
+          <span>
+            - Open-Source: I automated a tooling that's emulates the iPod
+            Accessory Protocol on an RaspberryPi Zero for Bluetooth connectivity
+            -{" "}
+            <Link
+              className="underline"
+              href="https://github.com/DontFred/pipod"
+            >
+              PiPod
+            </Link>
+          </span>,
+          "",
+          <span>
+            See more on my{" "}
+            <Link className="underline" href="https://github.com/DontFred">
+              GitHub
+            </Link>
+            .
+          </span>,
+          " ",
+        ]);
+        break; // fixed missing break
+      case "clear":
+        setDisplayedItems([...welcome]);
+        break;
+      default:
+        setDisplayedItems((items) => [
+          ...items,
+          <div className="text-green-500">
+            visitor@dontfred
+            <span className="text-foreground">:</span>
+            <span className="text-purple-500 px-0.5">~</span>
+            <span className="text-blue-500 px-0.5">$ </span>
+            <span className="text-foreground">{input}</span>
+          </div>,
+          `Command not found: ${input}`,
+          "Type 'help' to see the list of available commands.",
+          " ",
+        ]);
+        break;
+    }
+  };
+
+  return (
+    <div
+      className="font-mono font-bold absolute inset-0"
+      onClick={() => inputRef.current?.focus()}
+    >
+      <ul className="whitespace-pre-wrap leading-tight text-md p-8">
+        {displayedItems.map((line, index) => (
+          <li key={index} className="flex items-center">
+            {line}
+          </li>
+        ))}
+        <li className="flex w-full items-center">
+          <div className="text-green-500">
+            visitor@dontfred<span className="text-foreground">:</span>
+            <span className="text-purple-500 px-0.5">~</span>
+            <span className="text-blue-500 px-0.5">$ </span>
+          </div>
+          <input
+            type="text"
+            className="bg-transparent focus:outline-none w-3/4 caret-transparent"
+            autoFocus
+            ref={inputRef}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.currentTarget.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                runCommand(e.currentTarget.value);
+              }
+            }}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <div
+            className="bg-gray-400 w-2 -translate-x-[calc(120ch-2px)] h-4"
+            style={{
+              marginLeft: `calc(${inputValue.length}ch)`,
+            }}
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </li>
+      </ul>
     </div>
   );
 }

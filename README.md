@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frederik W. Grimm - Interactive Terminal Portfolio
 
-## Getting Started
+Hi there! 👋 This is the source code for my personal portfolio, built as an interactive web terminal.
 
-First, run the development server:
+**Visit the live site: [fwgrimm.com](https://fwgrimm.com)**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This project is a [Next.js](https://nextjs.org) application styled with [Tailwind CSS](https://tailwindcss.com/) and [shadcn/ui](https://ui.shadcn.com/) to mimic a command-line interface.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Interactive Terminal UI:** A console-based interface where users can type commands to navigate the site.
+- **ASCII Art Welcome:** A custom "DontFred" ASCII art header on load.
+- **Core Commands:**
+  - `help`: Lists all available commands.
+  - `about`: Displays a short bio about my work as a freelancer.
+  - `projects`: Shows a list of notable projects with links.
+  - `clear`: Clears the terminal screen and shows the welcome message again.
+- **Legal Pages:** Includes bilingual (German/English) pages for `/imprint`, `/privacy-policy`, and `/terms-and-conditions`.
+- **Bilingual Tabs:** Uses `shadcn/ui` tabs to easily switch between German and English on legal pages.
+- **Dark Mode First:** Designed with a clean, dark-mode aesthetic.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Tech Stack
 
-## Learn More
+- **Framework:** [Next.js](https://nextjs.org/) 15 (using App Router and Turbopack)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) 4
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/) (specifically for the Tabs)
+- **Icons:** [Lucide React](https://lucide.dev/)
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Running Locally
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To run this project on your local machine, follow these steps.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1.  **Clone the repository:**
 
-## Deploy on Vercel
+    ```bash
+    git clone [https://github.com/DontFred/homepage.git](https://github.com/DontFred/homepage.git)
+    cd homepage
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    _(Note: Assumes your repo is named `homepage` and your username is `DontFred`. Please update if incorrect!)_
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2.  **Install dependencies:**
+    You can use bun.
+
+    ```bash
+    bun install
+    ```
+
+3.  **Run the development server:**
+    This project is configured to use **Turbopack** for development (see `package.json`).
+
+    ```bash
+    bun dev
+    ```
+
+4.  **Open your browser:**
+    Open [http://localhost:3000](http://localhost:3000) to see the result. You can start editing the main page by modifying `app/page.tsx`.
+
+## 👤 Contact
+
+- **GitHub:** [@DontFred](https://github.com/DontFred)
+- **Email:** [mail@fwgrimm.com](mailto:mail@fwgrimm.com)

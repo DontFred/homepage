@@ -159,7 +159,7 @@ export default function Home() {
             like{" "}
             <Link
               className="underline"
-              href="https://github.com/https://github.com/Dokploy/dokploy"
+              href="https://github.com/Dokploy/dokploy"
             >
               Dokploy
             </Link>
